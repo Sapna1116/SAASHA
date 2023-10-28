@@ -46,7 +46,7 @@ def wishMe():
     else:
         greeting = "Hello!!"
     speak(greeting)
-    speak("I am SAASHAA, Your Voice Assistant!")
+    speak("I am SAASHA, Your Voice Assistant!")
     speak("How can I assist you today??")
 
 
