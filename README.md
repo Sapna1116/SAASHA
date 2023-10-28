@@ -1,25 +1,24 @@
-# SAASHAA - A Voice Assistant
+# SAASHA - A Voice Assistant
 
-SAASHAA is a Python-based voice assistant that can perform a variety of tasks through voice commands. It is designed to assist you with everyday tasks, provide information from the web, and offer entertainment, all through voice interactions.
+SAASHA is a Python-based voice assistant that can perform a variety of tasks through voice commands. It is designed to assist you with everyday tasks, provide information from the web, and offer entertainment, all through voice interactions.
 
 ## Features
 
-- **Voice Recognition**: SAASHAA uses the SpeechRecognition library to understand and interpret voice commands.
+- **Voice Recognition**: SAASHA uses the SpeechRecognition library to understand and interpret voice commands.
 - **Web Search**: Search the web and get summaries of topics using Wikipedia.
-- **Web Browsing**: Open websites by simply telling SAASHAA the website name.
+- **Web Browsing**: Open websites by simply telling SAASHA the website name.
 - **Laptop Control**: Shutdown, restart, sleep, hibernate, and more with voice commands.
 - **Music Player**: Play songs from a predefined directory.
-- **Data Remembering**: SAASHAA can remember and repeat information on command.
+- **Data Remembering**: SAASHA can remember and repeat information on command.
 - **Screenshots**: Take screenshots with voice commands.
 - **System Information**: Get CPU, RAM, disk, and battery information.
 - **Jokes**: Lighten the mood with a random joke.
-- **Multi-Language Support**: Future plans to support multiple languages.
+- **Multi-Language Support**: Supports multiple languages.
 - **And more**: Many exciting features are planned for future updates.
 
 ## Future Enhancements
 
 In future updates, we plan to incorporate the following features:
-- Multi-Language Support
 - Wake-up on Name Recognition
 - Capture Photos and Videos
 - Audio Recording
@@ -34,4 +33,4 @@ In future updates, we plan to incorporate the following features:
 
 ## Usage
 
-To use SAASHAA, run the Python script and start giving voice commands.
+To use SAASHA, run the Python script and start giving voice commands.
