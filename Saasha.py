@@ -1,13 +1,16 @@
-# provides interface for text-to-speech (TTS) conversion
-import pyttsx3 as pt  # pip install pyttsx3
+
+import pyttsx3 as pt
 import datetime as dt
 import speech_recognition as sr  # pip install SpeechRecognition
-import wikipedia as wiki  # pip install wikipedia
+import wikipedia as wiki
 import webbrowser as wb
 import os
 import pyautogui as pg
 import time
-# import subprocess
+import psutil
+import pyjokes
+import random
+
 engine = pt.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
@@ -43,7 +46,7 @@ def wishMe():
     else:
         greeting = "Hello!!"
     speak(greeting)
-    speak("I am SAASHAA, Your AI Voice Assistant!")
+    speak("I am SAASHAA, Your Voice Assistant!")
     speak("How can I assist you today??")
 
 
@@ -69,9 +72,6 @@ def takeCommand():
 def search(query):
     try:
         speak("Searching...")
-        # keywords = ['search', 'browse', 'find']
-        # for keyword in keywords:
-        #     query = query.replace(keyword, "")
         result = wiki.summary(query, sentences=1)
         speak("According to Wikipedia...")
         printSpeak(result)
@@ -153,7 +153,7 @@ def deleteData():
 
 
 screenshot_counter = 0
-subfolder_path = r"C:\Users\Admin\Desktop\PROJECTS\UDEMY\Saasha\SAASHA_The_Voice_Assistant\screenShot\\"
+subfolder_path = r"C:\Users\Admin\Desktop\PROJECTS\Saasha\SAASHA_The_Voice_Assistant\screenShot\\"
 
 
 def screenShot():
@@ -164,11 +164,41 @@ def screenShot():
         subfolder_path, f"screenshot_{timestamp}_{screenshot_counter}.png")
     img.save(filename)
     screenshot_counter += 1
-    speak(f"Screenshot taken successully")
+    speak(f"Screenshot taken successfully")
+
+
+def cpuInfo():
+    try:
+        usage = psutil.cpu_percent()
+        printSpeak("CPU is at - " + str(usage) + "%")
+
+        total_ram = psutil.virtual_memory().total
+        printSpeak(f"Total RAM: {total_ram / (1024 ** 3):.2f} GB")
+        available_ram = psutil.virtual_memory().available
+        printSpeak(f"Available RAM: {available_ram / (1024 ** 3):.2f} GB")
+
+        disk_usage = psutil.disk_usage('/')
+        printSpeak(
+            f"Total Disk Space: {disk_usage.total / (1024 ** 3):.2f} GB")
+        printSpeak(f"Used Disk Space: {disk_usage.used / (1024 ** 3):.2f} GB")
+
+        battery = psutil.sensors_battery()
+        if battery is not None:
+            printSpeak(f"Battery Percent: {battery.percent}")
+            printSpeak(f"Battery Status: {battery.power_plugged}")
+        else:
+            printSpeak("Battery information not available.")
+    except AttributeError as e:
+        print(e)
+        printSpeak("The requested CPU information is not available.")
+
+
+def tellJokes():
+    joke = pyjokes.get_joke()
+    speak(joke)
 
 
 speak("Hello")
-# speak("kaise ho choudhary kavita attri rajora.")
 
 if __name__ == "__main__":
     while (True):
@@ -197,6 +227,10 @@ if __name__ == "__main__":
             repeatRemembered()
         elif 'screenshot' in query:
             screenShot()
+        elif 'cpu' in query:
+            cpuInfo()
+        elif 'joke' in query:
+            tellJokes()
         elif any(keyword in query for keyword in ['delete', 'remove']):
             deleteData()
         elif any(keyword in query for keyword in ['date', 'day']):
